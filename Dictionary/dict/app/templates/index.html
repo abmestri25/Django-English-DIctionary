@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<p class="text-center h1 font-weight-bold mt-5">Dictionary</p>
+<div class="d-flex justify-content-center text-center">
+
+  <form method="POST">
+    {% csrf_token %}
+    <div class="form-group text-center">
+      <label for="exampleInputPassword1">Search Word</label>
+      <br>
+      <!-- <input type="text" class="form-control" name="meaningform" placeholder="Type here..."> -->
+      {{meaningform.word}}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+<div class="container">
+  <div class="d-flex justify-content-center mt-5 text-center">
+    {% if response_list %}
+      <div class="font-weight-bold">
+      {% for meaning in response_list %}
+    
+      {{response}}
+      {{ meaning }}<br>
+    
+      {% endfor %}
+    {% endif %}
+
+      {% if response %}
+      {{ response }}
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
